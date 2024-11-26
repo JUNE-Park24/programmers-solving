@@ -1,7 +1,20 @@
 #include <iostream>
 #include <math.h>
 // 백준 1740 [S3] https://www.acmicpc.net/problem/1740
-int main(){
+long long int powe(int x,int y){
+    long long int ans=1;
+    if (y==0){
+        return ans;
+    }
+    else{
+    for(int i=0;i<y;i++){
+        ans=ans*x;
+    }
+    return ans;
+    }
+}
+
+int main(void){
 long long int N;
 std::cin>>N;
 if (N==1){
@@ -11,10 +24,11 @@ if (N==1){
 long long int i=0,ans,res;
 while(true){
     i++;
-    if (pow(2,i)<=N & N<pow(2,i+1)){
-        ans=pow(3,i);
-        res=N-pow(2,i);
+    if (powe(2,i)<=N & N<powe(2,i+1)){
+        ans=powe(3,i);
+        res=N-powe(2,i);
         if (res==0){
+        std::cout<<ans;
         return 0;}
         break;
     }
@@ -25,9 +39,9 @@ if (res==1){
 }
 else{
 while (i>0){
-    if (pow(2,i)<=res){
-        res=res-pow(2,i);
-        ans+=pow(3,i);
+    if (powe(2,i)<=res){
+        res=res-powe(2,i);
+        ans+=powe(3,i);
     if (res==0){
         break;
     }
